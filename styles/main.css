@@ -12,16 +12,14 @@ body {
     position: relative;
 }
 
-.boxie-container {
+.box-container {
     width: 50px;
     height: 50px;
     position: absolute;
     transition: all .5s ease;
-    top: 0;
-    left: 0;
 }
 
-.boxie {
+.box {
     margin: 2.5px;
 }
 

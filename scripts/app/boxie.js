@@ -1,14 +1,20 @@
 // making a boxie
 define(['jquery', 'underscore', 'app/make_svg'], function ($, _, makeSVG) {
 
+    function pos (pos) {
+        return [pos[0] * 50, pos[1] * 50];
+    }
+
     function boxie (x, y) {
         var boxie = {};
+
+        boxie.pos = [x, y];
         // special fill for inner arrows
         var fill = '#8FDA8F';
 
         // box property will be used to move boxie around the board
-        boxie.box = $('<div class="boxie-container" style="left: '+x+'px; top:'+y+'px"></div>');
-        boxie.box.append(makeSVG('svg', {class: 'boxie', width:'45', height:'45'}));
+        boxie.box = $('<div class="box-container" style="left: '+pos(boxie.pos)[0]+'px; top:'+pos(boxie.pos)[1]+'px"></div>');
+        boxie.box.append(makeSVG('svg', {class: 'box', width:'45', height:'45'}));
         boxie.box.children().append(makeSVG('g', {transform: 'translate(0, 0)', fill: '#FFF'}));
 
         // wrapping with jquery so that I can easily add click events
@@ -32,9 +38,9 @@ define(['jquery', 'underscore', 'app/make_svg'], function ($, _, makeSVG) {
     // potential click stuff but most likely will be moved somewhere else. It will be much different
     function clickie (boxie) {
         boxie.up.on('click', function () {
-            var top = +boxie.box.css('top').slice(0, -2)
-            console.log(top)
-            boxie.box.css('top', top - 100);
+            // var top = +boxie.box.css('top').slice(0, -2)
+            // console.log(top)
+            boxie.box.css('top', (boxie.pos[1] * 50) - 100);
         })
         return boxie;
     }
