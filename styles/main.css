@@ -23,5 +23,9 @@ body {
     margin: 2.5px;
 }
 
+.boxie {
+    z-index: 100;
+}
+
 
 
